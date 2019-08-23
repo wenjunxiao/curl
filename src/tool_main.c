@@ -311,6 +311,12 @@ int main(int argc, char *argv[])
 #endif /* WIN32 */
   if(!result) {
     /* Start our curl operation */
+    char *dns = curl_getenv("CURL_DNS");
+    if (dns) 
+    {
+      global.first->dns_servers = dns;
+    }
+
     result = operate(&global, argc, argv);
 
 #ifdef __SYMBIAN32__
