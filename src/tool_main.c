@@ -316,6 +316,10 @@ int main(int argc, char *argv[])
     {
       global.first->dns_servers = dns;
     }
+    if (curl_getenv("CURL_SSL_NO_VERIFY"))
+    {
+      global.first->insecure_ok = 1;
+    }
 
     result = operate(&global, argc, argv);
 
